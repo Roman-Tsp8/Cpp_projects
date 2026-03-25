@@ -75,10 +75,31 @@ istream& operator>>(istream& in, Product& p) {
 
 // electronics product implementation
 
-ElectronicsProduct::ElectronicsProduct(string n, double p, int q, int w) : Product(n, p, q), warrranty(w) {}
+ElectronicsProduct::ElectronicsProduct(string n, double p, int q, int w) : Product(n, p, q), warranty(w) {}
 void ElectronicsProduct::display() const {
     Product::display();
-    cout << "Warranty: " << warrranty << " months" << endl;
+    cout << "Warranty: " << warranty << " months" << endl;
 }
 
+// smartphone implementation
+
+Smartphone::Smartphone(string n, double p, int q, int w, string b) : ElectronicsProduct(n, p, q, w), brand(b) {}
+
+Smartphone::Smartphone(const Smartphone& other) : ElectronicsProduct(other.name, other.price, other.quantity, other.warranty), brand(other.brand) {}
+
+Smartphone& Smartphone::operator=(const Smartphone& other) {
+    if (this != &other) {
+        name = other.name;
+        price = other.price;
+        quantity = other.quantity;
+        warranty = other.warranty;
+        brand = other.brand;
+    }
+    return *this;
+}
+
+void Smartphone::display() const {
+    ElectronicsProduct::display();
+    cout << "Brand: " << brand << endl;
+}
 

@@ -38,12 +38,21 @@ class Product {
 
 class ElectronicsProduct : public Product {
     protected:
-        int warrranty; 
+        int warranty; 
     public:
         ElectronicsProduct(string n, double p, int q, int w);
         void display() const override;
 };
 
+class Smartphone : public ElectronicsProduct {
+    private:
+        string brand;
+    public: 
+    Smartphone(string n, double p, int q, int w, string b);
+    Smartphone(const Smartphone& other);
+    Smartphone& operator=(const Smartphone& other);
 
+    void display() const override;
+};
 
 #endif
