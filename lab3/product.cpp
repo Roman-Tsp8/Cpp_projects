@@ -20,6 +20,15 @@ Product::Product(Product&& other) noexcept : name(move(other.name)), price(other
     cout << "Product move constructor is called " << endl;
 }
 
+Product& Product::operator=(const Product& other) {
+    if (this != &other) {
+        name = other.name;
+        price = other.price;
+        quantity = other.quantity;
+    }
+    return *this;
+}
+
 Product::~Product() {
     cout << "Product destructor is called " << endl;
 }
@@ -62,6 +71,14 @@ istream& operator>>(istream& in, Product& p) {
     cout << "Enter product quantity: ";
     in >> p.quantity;
     return in;
+}
+
+// electronics product implementation
+
+ElectronicsProduct::ElectronicsProduct(string n, double p, int q, int w) : Product(n, p, q), warrranty(w) {}
+void ElectronicsProduct::display() const {
+    Product::display();
+    cout << "Warranty: " << warrranty << " months" << endl;
 }
 
 
