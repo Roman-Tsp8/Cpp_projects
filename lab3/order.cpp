@@ -1,16 +1,28 @@
 #include "order.h"
 
-Order::Order() : Order("Unknown", 0) {}
 
-Order::Order(string n, int i) : name(n), id(i) {
+
+Order::Order(Customer* c, string n, int i) : customer(c), name(n), id(i) {
     cout << "Order constructor is called " << endl;
 } 
 
-Order::~Order() {
-    cout << "Order destructor is called " << endl;
+
+void Order::addProduct(Product* p) {
+    products.push_back(p);
 }
 
 void Order::display() const {
+    customer->display();
+    cout << "Products:\n";
+    for (auto p : products) {
+        p->display();
+        cout << "-------------" << endl;
+    }
+
     cout << "Order Name: " << name << endl;
     cout << "Order ID: " << id << endl;
+}
+
+Order::~Order() {
+    cout << "Order destructor is called " << endl;
 }
