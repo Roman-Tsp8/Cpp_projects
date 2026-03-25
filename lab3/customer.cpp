@@ -14,3 +14,13 @@ void Customer::display() const {
     cout << "Customer Name: " << name << endl;
     cout << "Email of a customer: " << email << endl;
 }
+
+//  VIPCustomer implementation
+
+VIPCustomer::VIPCustomer(string n, string e, double d) : Customer(n, e), discount(d) {
+
+}
+void VIPCustomer::display() const {
+    Customer::display();
+    cout << "Discount: " << discount << "%" << endl;
+}

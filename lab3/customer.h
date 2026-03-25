@@ -7,18 +7,24 @@
 using namespace std;
 
 class Customer {
-    private: 
+    protected: 
     string name;
     string email;
 
     public:
     Customer();
+    Customer(string n = "Unknown", string e = "No Email");
+    virtual void display() const;
+    virtual ~Customer();
 
-    Customer(string n, string e);
+};
 
-    ~Customer();
+class VIPCustomer : public Customer{
+    double discount;
 
-    void display() const;
+    public : 
+    VIPCustomer(string n, string e, double d);
+    void display() const override;
 };
 
 #endif
