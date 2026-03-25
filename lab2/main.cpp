@@ -4,7 +4,7 @@
 using namespace std;
 
 class Product {
-    private:
+    private: 
         string name;
         double price;
         int quantity;
