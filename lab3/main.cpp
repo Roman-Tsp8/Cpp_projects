@@ -7,10 +7,12 @@
 using namespace std;
 
 int main() {
+
+    // static binding
     Product s1("Laptop", 799.99, 10);
     s1.display();
     Product s2 = s1;
-    
+    s1.nonVirtualDisplay();
     s2.setPrice(899.99);
     Product s4("Smartphone", 499.99, 5);
     s4.display();
@@ -20,6 +22,23 @@ int main() {
 
     Smartphone p1("IPhone 13", 999.99, 3, 24, "Apple");
     Smartphone p2("Samsung Galaxy S21", 899.99, 4, 24, "Samsung");
+    p1.nonVirtualDisplay();
+
+    // dynamic polymorphism via pointers
+
+    Product* bp = &s1;
+    bp->display();
+
+    // dynamic polymorphism via references
+    Product& br = s1;
+    br.display();
+
+    // usage of final class
+    Sellable* sell1 = &p1;
+    sell1->sell();
+    cout<< "Price: " << sell1->getPrice() << endl;
+
+// basic VIP customer pointer class
 
     VIPCustomer cv1("Johny K","cooljohny@gmail.com", 20);
 
