@@ -18,16 +18,21 @@ int main() {
     Product s5 = s2 + s1;
     cout << s5 << endl;
 
-    Product s6;
-    cin >> s6;
-    cout << s6 << endl;
+    Smartphone p1("IPhone 13", 999.99, 3, 24, "Apple");
+    Smartphone p2("Samsung Galaxy S21", 899.99, 4, 24, "Samsung");
+
+    VIPCustomer cv1("Johny K","cooljohny@gmail.com", 20);
+
+    Order o1(&cv1, "Order1", 101);
+
+    o1.addProduct(&p1);
+    o1.addProduct(&p2);
+
+    o1.display();
 
     Customer c1("Johny K", "johnyk@gmail.com");
     c1.display();
 
-
-    Order o1("Laptop", 432);
-    o1.display();
 
     cout << "Total number of products created: " << Product::getProductCount() << endl;
     return 0;
