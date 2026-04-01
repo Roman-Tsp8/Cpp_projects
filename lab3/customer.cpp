@@ -11,8 +11,8 @@ Customer::~Customer() {
 }
 
 void Customer::display() const {
-    cout << "Customer Name: " << name << endl;
-    cout << "Email of a customer: " << email << endl;
+    cout << "Customer Name: " << name << ", Email: " << email << endl;
+
 }
 
 //  VIPCustomer implementation

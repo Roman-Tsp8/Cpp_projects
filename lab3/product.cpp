@@ -3,7 +3,6 @@
 
 int Product::ProductCount = 0;
 
-Product::Product() : Product("Unknown", 0.0, 1) {}
 
 Product::Product(string n, double p, int q) : name(n) , price(p), quantity(q) {
     ProductCount++;
@@ -33,10 +32,12 @@ Product::~Product() {
     cout << "Product destructor is called " << endl;
 }
 
+void Product::nonVirtualDisplay() const {
+    cout << "[Static] Product Name: " << name << ", Price: " << price << ", Quantity: " << quantity << endl;
+}
+
 void Product::display() const {
-    cout << "Product Name: " << name << endl;
-    cout << "Price: $" << price << endl;
-    cout << "Quantity: " << quantity << endl;
+    cout << "[Dynamic] Product Name: " << name << ", Price: " << price << ", Quantity: " << quantity << endl;
 }
 
 

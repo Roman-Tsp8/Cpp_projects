@@ -9,7 +9,7 @@ using namespace std;
 class Sellable {
     public: 
     virtual double getPrice() const = 0;
-    virtual void sell() const = 0;
+    virtual void sell() = 0;
     virtual ~Sellable() {}
 };
 
@@ -17,21 +17,21 @@ class Product : public Sellable {
     protected: 
         string name;
         double price;
-        mutable int quantity;
+        int quantity;
         static int ProductCount;
     public:
+    
         Product(string n = "Unknown", double p = 0, int q = 1);
         Product(const Product& other);
         Product(Product&& other) noexcept;
         virtual ~Product();
         Product& operator=(const Product& other);
-        static int  getProductCount();
-        
+
         void nonVirtualDisplay() const;
         virtual void display() const;
 
         void setPrice(double p);
-
+        double getPrice() const override { return price; }
         Product operator-() const;
         Product operator+(const Product& other) const;
 
@@ -39,7 +39,7 @@ class Product : public Sellable {
         friend istream& operator>>(istream& in, Product& p); 
 
         double getPrice() const override { return price;}
-        void sell() const override {
+        void sell() override {
             if (quantity > 0) {
                 quantity--; cout << name << " sold." << endl;
             } else {
