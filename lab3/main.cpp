@@ -3,11 +3,14 @@
 #include "product.h"
 #include "customer.h"
 #include "order.h"    
+#include <vector>
+#include <memory>
 
 using namespace std;
+vector<shared_ptr<Product>> products;
+
 
 int main() {
-
     // static binding
     Product s1("Laptop", 799.99, 10);
     s1.display();

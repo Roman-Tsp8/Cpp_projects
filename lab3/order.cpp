@@ -1,7 +1,5 @@
 #include "order.h"
 
-
-
 Order::Order(Customer* c, string n, int i) : customer(c), name(n), id(i) {
     cout << "Order constructor is called " << endl;
 } 
