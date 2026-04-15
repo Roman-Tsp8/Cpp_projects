@@ -38,7 +38,6 @@ class Product : public Sellable {
         friend ostream& operator<<(ostream& out, const Product& p);
         friend istream& operator>>(istream& in, Product& p); 
 
-        double getPrice() const override { return price;}
         void sell() override {
             if (quantity > 0) {
                 quantity--; cout << name << " sold." << endl;

@@ -6,22 +6,21 @@
 #include "customer.h"
 #include "product.h"
 #include <vector>
+#include <memory>
 using namespace std;
 
+
 class Order {
-
-    Customer* customer;
-    vector<Product*> products;
     private: 
-    string name;
-    int id;
+        string name;
+        int id;
+        shared_ptr<Customer> customer;
+        vector<shared_ptr<Product>> products;
+
     public: 
-
-
     Order() ;
-    Order(Customer* c, string n, int i);
-    
-    void addProduct(Product* p);
+    Order(shared_ptr<Customer> c, string n, int i);
+    void addProduct(shared_ptr<Product> p);
     void display() const;
     ~Order();
 };

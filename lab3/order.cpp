@@ -1,11 +1,16 @@
 #include "order.h"
+#include <iostream>
+#include <memory>
+using namespace std;
 
-Order::Order(Customer* c, string n, int i) : customer(c), name(n), id(i) {
-    cout << "Order constructor is called " << endl;
-} 
 
+Order::Order() : customer(nullptr), name("Unnamed Order"), id(0) {}
 
-void Order::addProduct(Product* p) {
+void Order::addProduct(shared_ptr<Product> p) {
+    products.push_back(p);
+}
+
+void Order::addProduct(shared_ptr<Product> p) {
     products.push_back(p);
 }
 

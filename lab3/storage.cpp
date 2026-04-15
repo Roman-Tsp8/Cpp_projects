@@ -6,7 +6,7 @@ using namespace std;
 void SaveProducts(const vector<shared_ptr<Product>>& products) {
     ofstream file("products.txt");
     for (auto& p : products) {
-        file << p->getPrice() << endl;
+        file << p->getPrice() << " " << endl;
     }
 }
 
@@ -16,4 +16,9 @@ void loadProducts(vector<shared_ptr<Product>>& products) {
     while (file >> price) {
         products.push_back(make_shared<Product>("Loaded Product", price, 1));
     }
+}
+
+void logAction(const string& text) {
+    ofstream file("log.txt", ios::app);
+    file<< text << endl;
 }
