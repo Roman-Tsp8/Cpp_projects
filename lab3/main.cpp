@@ -11,6 +11,37 @@ using namespace std;
 vector<shared_ptr<Product>> products;
 
 
+
+void adminMenu() {
+    int choice;
+    do {
+        cout << "\n --- Admin Menu ---\n";
+        cout << "1. Add product\n";
+        cout << "2. Save products\n";
+        cout << "0. Exit\n";
+        cin >> choice;
+
+        if (choice == 1) {
+            string name;
+            double price;
+            int quantity;
+
+            cout << "Name: "; cin >>name;
+            cout << "Price: "; cin >> price;
+            cout << "Quantity: "; cin >> quantity;
+
+            auto p = make_shared<Product>(name, price, quantity);
+            products.push_back(p);
+
+            logAction("Added product: " + name);
+        }
+        if (choice == 2) {
+            SaveProducts(products);
+            logAction("Admin saved products to file.");
+        }
+    } while (choice != 0);
+}
+
 int main() {
     // static binding
     Product s1("Laptop", 799.99, 10);
