@@ -1,0 +1,48 @@
+# depslib dependency file v1.0
+1776627346 source:c:\users\user\cpp_projects\lab3\lab6\main.cpp
+	<iostream>
+	"string"
+	"product.h"
+	"customer.h"
+	"order.h"
+	<vector>
+	<memory>
+	"storage.h"
+
+1776330754 c:\users\user\cpp_projects\lab3\lab6\product.h
+	<iostream>
+	<string>
+
+1776330131 c:\users\user\cpp_projects\lab3\lab6\customer.h
+	<iostream>
+	"string"
+
+1776330227 c:\users\user\cpp_projects\lab3\lab6\order.h
+	<string>
+	<vector>
+	<memory>
+	"customer.h"
+	"product.h"
+
+1776330302 c:\users\user\cpp_projects\lab3\lab6\storage.h
+	"product.h"
+	<vector>
+	<memory>
+	<string>
+
+1776319617 source:c:\users\user\cpp_projects\lab3\lab6\customer.cpp
+	"customer.h"
+
+1776329082 source:c:\users\user\cpp_projects\lab3\lab6\order.cpp
+	"order.h"
+	<memory>
+	<iostream>
+
+1776330039 source:c:\users\user\cpp_projects\lab3\lab6\product.cpp
+	"product.h"
+	<utility>
+
+1776627593 source:c:\users\user\cpp_projects\lab3\lab6\storage.cpp
+	"storage.h"
+	<fstream>
+
