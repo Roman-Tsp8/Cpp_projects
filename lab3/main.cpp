@@ -10,8 +10,6 @@
 using namespace std;
 vector<shared_ptr<Product>> products;
 
-
-
 void adminMenu() {
     int choice;
     do {
@@ -42,8 +40,59 @@ void adminMenu() {
     } while (choice != 0);
 }
 
+void userMenu() {
+    int choice;
+    do {
+        cout << "\n --- User Menu ---\n";
+        cout << "1. Show products\n";
+        cout << "2. Buy product\n";
+        cout << "0. Exit\n";
+        cin >> choice;
+
+        if (choice == 1) {
+            for (auto& p : products) {
+                p->display();
+            }
+            logAction("User viewed products.");
+        }
+
+        if (choice == 2) {
+            int index;
+            cout << "Enter product index to buy: ";
+            cin >> index;
+            if (index >= 0 && index < products.size()) {
+                products[index]->sell();
+                logAction("User bought product");
+            } else {
+                cout << "Invalid index." << endl;
+            }
+        }
+    } while (choice != 0);  
+}
+
 int main() {
     // static binding
+
+    loadProducts(products);
+
+    int role;
+    cout << "1. Admin\n2. User\nChoose role: ";
+    cin >> role;
+
+    if (role == 1) {
+        string pass;
+        cout << "Enter admin password: "; 
+        cin >> pass;
+
+        if (pass == "admin123") {
+            adminMenu();
+        } else {
+            cout  << "Incorrect password. Exiting." << endl;
+        }
+    } else {
+        userMenu();
+    }
+    return 0;
     Product s1("Laptop", 799.99, 10);
     s1.display();
     Product s2 = s1;
@@ -76,13 +125,6 @@ int main() {
 // basic VIP customer pointer class
 
     VIPCustomer cv1("Johny K","cooljohny@gmail.com", 20);
-
-    Order o1(&cv1, "Order1", 101);
-
-    o1.addProduct(&p1);
-    o1.addProduct(&p2);
-
-    o1.display();
 
     Customer c1("Johny K", "johnyk@gmail.com");
     c1.display();

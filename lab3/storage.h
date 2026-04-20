@@ -1,4 +1,4 @@
-#pragma once;
+
 #include "product.h"
 #include <vector>
 #include <memory>
